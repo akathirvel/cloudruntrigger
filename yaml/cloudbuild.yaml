@@ -1,0 +1,25 @@
+steps:
+  - name: 'gcr.io/cloud-builders/git'
+    secretEnv: ['SSH_KEY']
+    entrypoint: 'bash'
+    args:     
+      - ./scripts/0-checkout.sh
+      - $_SRC_REPO_URL
+      - $_BRANCH
+      - "ANGLES-SSH-KEY"
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args:
+      - './scripts/1-couldrun_build.sh'
+      - $_BRANCH
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: bash
+    args:
+      - ./scripts/2-cloudrundeploy.sh
+      - $_BRANCH
+availableSecrets:
+    secretManager:
+      - versionName: projects/1004695768282/secrets/ANGLES-SSH-KEY/versions/latest
+        env: 'SSH_KEY'
+options:
+  logging: CLOUD_LOGGING_ONLY
