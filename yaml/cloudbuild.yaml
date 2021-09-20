@@ -13,7 +13,7 @@ steps:
       - './scripts/1-couldrun_build.sh'
       - $_REPO
       - $_BRANCH
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: bash
     args:
       - ./scripts/2-cloudrundeploy.sh
