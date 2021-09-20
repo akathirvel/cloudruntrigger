@@ -11,11 +11,13 @@ steps:
     entrypoint: 'bash'
     args:
       - './scripts/1-couldrun_build.sh'
+      - $_REPO
       - $_BRANCH
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: bash
     args:
       - ./scripts/2-cloudrundeploy.sh
+      - $_REPO
       - $_BRANCH
 availableSecrets:
     secretManager:
