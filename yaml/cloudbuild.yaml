@@ -3,7 +3,7 @@ steps:
     secretEnv: ['SSH_KEY']
     entrypoint: 'bash'
     args:     
-      - ./scripts/0-checkout.sh
+      - './scripts/0-checkout.sh'
       - $_SRC_REPO_URL
       - $_BRANCH
       - "ANGLES-SSH-KEY"
