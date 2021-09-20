@@ -1,6 +1,5 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
-    secretEnv: ['SSH_KEY']
     entrypoint: 'bash'
     args:     
       - './scripts/0-checkout.sh'
